@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.test.demo_vue_axios.Dao.PepoleMapper">
+
+    <select id="getAll" resultMap="all">
+        select * from pepole;
+    </select>
+
+
+    <resultMap id="all" type="com.example.test.demo_vue_axios.Model.Pepole">
+        <id column="id" property="id"/>
+        <result column="Pname" property="pname"/>
+        <result column="Pgender" property="pgender"/>
+        <result column="Page" property="page"/>
+        <result column="Paddress" property="paddress"/>
+    </resultMap>
+</mapper>
