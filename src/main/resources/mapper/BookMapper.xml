@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.test.demo_vue_axios.Dao.BookMapper">
+
+    <select id="getBookList" resultMap="BC">
+        SELECT b.id,b.abs,b.author,b.cover,b.date,b.press,b.title,c.`name` FROM `book` as b,category as c where b.cid = c.id;
+    </select>
+
+    <resultMap id="BC" type="com.example.test.demo_vue_axios.Vo.BookCategory">
+        <id property="id" column="id"/>
+        <result property="abs" column="abs"/>
+        <result property="author" column="author"/>
+        <result property="cover" column="cover"/>
+        <result property="date" column="date"/>
+        <result property="press" column="press"/>
+        <result property="title" column="title"/>
+        <result property="categoryName" column="name"/>
+    </resultMap>
+
+    <select id="getBookListByInfo" resultMap="BC" parameterType="java.lang.String">
+        SELECT b.id,b.abs,b.author,b.cover,b.date,b.press,b.title,c.`name` FROM `book` as b,category as c where b.cid = c.id
+            <if test="info != null">
+                and title LIKE CONCAT('%',#{info},'%') or author LIKE CONCAT('%',#{info},'%')
+            </if>
+    </select>
+
+</mapper>

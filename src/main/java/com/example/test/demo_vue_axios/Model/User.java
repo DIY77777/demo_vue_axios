@@ -1,5 +1,8 @@
 package com.example.test.demo_vue_axios.Model;
 
+import com.baomidou.mybatisplus.annotation.TableName;
+
+@TableName("user")
 public class User {
     private int id;
     private String username;
